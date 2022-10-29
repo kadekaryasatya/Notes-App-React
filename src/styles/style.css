@@ -1,0 +1,475 @@
+:root {
+  --background: #202124;
+  --background-grey: #413f42;
+  --text-hover: #81c6e8;
+  --text-color: #ffffff;
+  --date-color: #aaa;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--background);
+  color: var(--text-color);
+}
+
+a {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--text-hover);
+}
+
+.nav-body {
+  overflow: hidden;
+}
+
+.add {
+  margin-top: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 1rem;
+  float: right;
+  color: var(--text-color);
+  font-size: 50px;
+}
+
+h5 {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.note-app {
+  padding: 2rem;
+}
+
+.note-app h2 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.note-app h1 {
+  text-align: center;
+}
+
+.note-app__body {
+  max-width: 1000px;
+  margin: 16px auto;
+  padding: 12px;
+}
+
+.note-list {
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#active-notes {
+  padding-top: 1rem;
+}
+
+#archive-notes {
+  padding-top: 1rem;
+}
+
+.note-item {
+  width: 300px;
+  margin: 1.5rem;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px 1px rgb(253, 250, 250);
+  background-color: var(--background-grey);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-item__content {
+  padding: 12px;
+  flex: 1;
+}
+
+.note-item__title {
+  color: var(--text-color);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.note-item__date {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: var(--date-color);
+}
+
+.note-item__body {
+  margin-top: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.note-item__action {
+  display: flex;
+}
+
+.note-item__delete-button,
+.note-item__archive-button {
+  font-size: 20px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: 0;
+  border-top: 1px solid var(--date-color);
+  padding: 8px 0;
+  font-family: "Inter", sans-serif;
+  cursor: pointer;
+}
+
+.note-item__delete-button {
+  border-right: 1px solid #aaa;
+  color: #ff5f52;
+}
+
+.note-item__archive-button {
+  color: #fff263;
+}
+
+.note-item__archive-button:hover {
+  color: #c49000;
+}
+
+.note-item__delete-button:hover {
+  color: #b00020;
+}
+
+.detail-page {
+  margin: 32px auto 0;
+  width: 90%;
+}
+
+.detail-page__title {
+  font-size: 30px;
+  margin-top: 2rem;
+  margin-bottom: 3px;
+}
+
+.detail-page__createdAt {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.login-page {
+  margin-top: 4rem;
+}
+
+.login-input {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.login-input input {
+  display: block;
+  padding: 16px;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 20px;
+  background-color: transparent;
+  border: 2px dashed var(--text-color);
+  border-radius: 10px;
+}
+
+.login-input button {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 8px;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  color: var(--text-color);
+  border: 1px solid var(--date-color);
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.login-input button:hover {
+  background-color: var(--text-color);
+  color: var(--background);
+}
+
+.register {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  float: right;
+}
+
+.register-page {
+  margin-top: 4rem;
+}
+
+.userPage {
+  padding-bottom: 5rem;
+}
+
+.register-input {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.register-input input {
+  display: block;
+  padding: 16px;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 20px;
+  background-color: transparent;
+  border: 2px dashed var(--text-color);
+  border-radius: 10px;
+}
+
+.register-input button {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 8px;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  color: var(--text-color);
+  border: 1px solid var(--date-color);
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-input button:hover {
+  background-color: var(--text-color);
+  color: var(--background);
+}
+
+.login {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  float: right;
+}
+
+.form-input {
+  margin-top: 4rem;
+}
+
+.note-input {
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.note-input input,
+.note-input textarea {
+  display: block;
+  width: 100%;
+}
+
+.note-input__title {
+  font-weight: bold;
+}
+
+.note-input__title__char-limit {
+  font-size: 14px;
+  text-align: right;
+  color: var(--date-color);
+}
+
+.note-input__body {
+  min-height: 175px;
+}
+
+.note-input button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  border: 1px solid var(--date-color);
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.note-input button:hover {
+  color: #65d317;
+}
+
+textarea {
+  height: 150px;
+}
+
+input,
+textarea {
+  padding: 12px;
+  margin: 12px 0;
+  font-family: "Inter", sans-serif;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--date-color);
+  border-radius: 4px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--date-color);
+  font-weight: bold;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: var(--background-grey);
+}
+
+.topnav a,
+.topnav button {
+  float: left;
+  display: block;
+  color: var(--text-color);
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.topnav a:hover {
+  background-color: rgb(239, 243, 129);
+  color: black;
+}
+
+.topnav a.active {
+  background-color: var(--text-color);
+  color: var(--background);
+}
+
+.topnav a.logout {
+  float: right;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  border: 0;
+  font-size: 20px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.topnav button {
+  float: left;
+  background-color: transparent;
+  font-family: "Inter", sans-serif;
+  border: 0;
+  font-size: 20px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.topnav a.add {
+  float: right;
+}
+
+.topnav a.archive {
+  padding-right: 1rem;
+  float: right;
+}
+
+.topnav input[type="text"] {
+  padding: 6px;
+  border: 1;
+  margin-left: 1rem;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+
+.search-bar {
+  margin-left: 2rem;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a,
+  .topnav button,
+  .topnav input[type="text"] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type="text"] {
+    border: 1px solid #ccc;
+  }
+
+  .note-app {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .note-input {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .login-input {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+
+  .register-input,
+  .register,
+  .login {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  border-top: 1px solid var(--date-color);
+  margin-top: 50px;
+  padding: 30px;
+  text-align: center;
+  background-color: var(--background-grey);
+}
+
+.note-app__header {
+  margin-top: 2rem;
+  font-size: xx-large;
+}
