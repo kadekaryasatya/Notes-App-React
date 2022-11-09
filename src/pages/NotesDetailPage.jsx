@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useParams } from "react-router-dom";
 import { HiArrowLeft } from "react-icons/hi";
-import { showFormattedDate, getNote } from "../utils/data";
+import { getNotes } from "../utils/api";
+import { showFormattedDate } from "../utils/data";
 import NotFound from "./NotFound";
+import LocaleContext from "../contexts/LocaleContext";
 
 function NotesDetailPage() {
-  const [note, setNote] = useState({});
+  const [note, setNote] = useState([]);
   const { id } = useParams();
+  const { locale } = useContext(LocaleContext);
 
   useEffect(() => {
-    const showNote = getNote(id);
-    if (showNote) {
-      setNote(showNote);
-    }
-    // eslint-disable-next-line
-  }, []);
+    getNotes(id).then(({ data }) => {
+      setNote(data);
+    });
+  }, [id]);
 
   return (
     <section className="detail-page">
       {"id" in note ? (
         <>
-          <Link to="/" title="Kembali">
-            <HiArrowLeft /> Kembali
+          <Link to="/" title="Back">
+            <HiArrowLeft /> {locale === "id" ? "Kembali" : "Back"}
           </Link>
           <h3 className="detail-page__title">{note.title}</h3>
           <p className="detail-page__createdAt">{showFormattedDate(note.createdAt)}</p>
