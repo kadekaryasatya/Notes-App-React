@@ -64,7 +64,7 @@ function ArchivePage() {
 
 ArchivePage.propTypes = {
   defaultKeyword: PropTypes.string,
-  // keywordChange: PropTypes.func.isRequired,
+  keywordChange: PropTypes.func,
 };
 
 export default ArchivePage;

@@ -64,7 +64,7 @@ function HomePage() {
 
 HomePage.propTypes = {
   defaultKeyword: PropTypes.string,
-  // keywordChange: PropTypes.func.isRequired,
+  keywordChange: PropTypes.func,
 };
 
 export default HomePage;
