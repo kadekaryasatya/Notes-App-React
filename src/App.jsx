@@ -9,7 +9,7 @@ import ArchivePage from "./pages/ArchivePage";
 import NotFound from "./pages/NotFound";
 import NotesDetailPage from "./pages/NotesDetailPage";
 import RegisterPage from "./pages/RegisterPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage.jsx";
 import { getUserLogged, putAccessToken } from "./utils/api";
 import { LocaleProvider } from "./contexts/LocaleContext";
 
