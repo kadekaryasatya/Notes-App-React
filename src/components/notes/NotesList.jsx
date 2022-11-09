@@ -13,6 +13,8 @@ function NotesList({ onDelete, notes, onActive }) {
 }
 
 NotesList.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  onActive: PropTypes.func.isRequired,
   notes: PropTypes.oneOfType([PropTypes.array]).isRequired,
 };
 

@@ -43,6 +43,7 @@ function Navbar({ logout, name }) {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
+  name: PropTypes.string,
 };
 
 export default Navbar;

@@ -4,7 +4,6 @@ import SearchBar from "../components/layout/SearchBar";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MdOutlineAddCircle } from "react-icons/md";
-import PropTypes from "prop-types";
 import { getActiveNotes, deleteNote, archiveNote } from "../utils/api";
 import LocaleContext from "../contexts/LocaleContext";
 import { PacmanLoader } from "react-spinners";
@@ -78,10 +77,5 @@ function HomePage() {
     </section>
   );
 }
-
-HomePage.propTypes = {
-  defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func,
-};
 
 export default HomePage;

@@ -59,6 +59,7 @@ class NotesApp extends React.Component {
   }
 
   async componentDidMount() {
+    document.documentElement.setAttribute("data-theme", this.state.themeContext.theme);
     const { data } = await getUserLogged();
     this.setState(() => {
       return {

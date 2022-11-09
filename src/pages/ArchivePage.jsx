@@ -4,7 +4,6 @@ import SearchBar from "../components/layout/SearchBar";
 import { useSearchParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { MdOutlineAddCircle } from "react-icons/md";
-import PropTypes from "prop-types";
 import { getArchivedNotes, deleteNote, unarchiveNote } from "../utils/api";
 import LocaleContext from "../contexts/LocaleContext";
 import { PacmanLoader } from "react-spinners";
@@ -78,10 +77,5 @@ function ArchivePage() {
     </section>
   );
 }
-
-ArchivePage.propTypes = {
-  defaultKeyword: PropTypes.string,
-  keywordChange: PropTypes.func,
-};
 
 export default ArchivePage;
