@@ -5,11 +5,13 @@ import { getNotes } from "../utils/api";
 import { showFormattedDate } from "../utils/data";
 import NotFound from "./NotFound";
 import LocaleContext from "../contexts/LocaleContext";
+import { ClimbingBoxLoader } from "react-spinners";
 
 function NotesDetailPage() {
   const [note, setNote] = useState([]);
   const { id } = useParams();
   const { locale } = useContext(LocaleContext);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getNotes(id).then(({ data }) => {
@@ -17,9 +19,23 @@ function NotesDetailPage() {
     });
   }, [id]);
 
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
+  if (!note) {
+    return <NotFound />;
+  }
   return (
     <section className="detail-page">
-      {"id" in note ? (
+      {loading ? (
+        <div className="loading">
+          <ClimbingBoxLoader color={"#FCE700"} loading={loading} />
+        </div>
+      ) : (
         <>
           <Link to="/" title="Back">
             <HiArrowLeft /> {locale === "id" ? "Kembali" : "Back"}
@@ -27,10 +43,6 @@ function NotesDetailPage() {
           <h3 className="detail-page__title">{note.title}</h3>
           <p className="detail-page__createdAt">{showFormattedDate(note.createdAt)}</p>
           <div className="detail-page__body">{note.body}</div>
-        </>
-      ) : (
-        <>
-          <NotFound />
         </>
       )}
     </section>

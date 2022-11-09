@@ -1,14 +1,14 @@
 import React from "react";
 import { GrSun } from "react-icons/gr";
 import { IoMdMoon } from "react-icons/io";
-import useTheme from "../../hooks/useTheme";
+import { ThemeConsumer } from "../../contexts/ThemeContext";
 
 export default function ThemeToggler() {
-  const [theme, changeTheme] = useTheme();
-
   return (
-    <button type="button" className="toggle-theme" onClick={() => changeTheme(theme === "dark" ? "light" : "dark")}>
-      {theme === "dark" ? <IoMdMoon /> : <GrSun />}
-    </button>
+    <ThemeConsumer>
+      {({ theme, toggleTheme }) => {
+        return <button onClick={toggleTheme}>{theme === "light" ? <GrSun /> : <IoMdMoon />}</button>;
+      }}
+    </ThemeConsumer>
   );
 }

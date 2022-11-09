@@ -6,6 +6,12 @@
   --date-color: #aaa;
 }
 
+[data-theme="light"] {
+  --background: #ffffff;
+  --background-grey: #dddddd;
+  --text-color: #000000;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -403,6 +409,13 @@ textarea::placeholder {
 .search-bar {
   margin-left: 2rem;
   font-size: 17px;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
 }
 
 @media screen and (max-width: 600px) {

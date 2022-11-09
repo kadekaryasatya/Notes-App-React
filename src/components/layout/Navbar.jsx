@@ -4,6 +4,7 @@ import { FiLogOut } from "react-icons/fi";
 import { MdLanguage, MdStickyNote2 } from "react-icons/md";
 import PropTypes from "prop-types";
 import LocaleContext from "../../contexts/LocaleContext";
+import ThemeToggler from "./ThemeToggler";
 
 function Navbar({ logout, name }) {
   const { locale, toggleLocale } = useContext(LocaleContext);
@@ -30,8 +31,10 @@ function Navbar({ logout, name }) {
           </a>
 
           <button className="language" onClick={toggleLocale}>
-            <MdLanguage color="white" /> {locale === "id" ? "eng" : "id"}
+            <MdLanguage /> {locale === "id" ? "id" : "eng"}
           </button>
+
+          <ThemeToggler />
         </li>
       </ul>
     </div>

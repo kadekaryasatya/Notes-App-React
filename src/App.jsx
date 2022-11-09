@@ -12,6 +12,7 @@ import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage.jsx";
 import { getUserLogged, putAccessToken } from "./utils/api";
 import { LocaleProvider } from "./contexts/LocaleContext";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 class NotesApp extends React.Component {
   constructor(props) {
@@ -30,6 +31,22 @@ class NotesApp extends React.Component {
               localeContext: {
                 ...prevState.localeContext,
                 locale: newLocale,
+              },
+            };
+          });
+        },
+      },
+
+      themeContext: {
+        theme: localStorage.getItem("theme") || "light",
+        toggleTheme: () => {
+          this.setState((prevState) => {
+            const newTheme = prevState.themeContext.theme === "light" ? "dark" : "light";
+            localStorage.setItem("theme", newTheme);
+            return {
+              themeContext: {
+                ...prevState.themeContext,
+                theme: newTheme,
               },
             };
           });
@@ -71,6 +88,12 @@ class NotesApp extends React.Component {
     putAccessToken("");
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.themeContext.theme !== this.state.themeContext.theme) {
+      document.documentElement.setAttribute("data-theme", this.state.themeContext.theme);
+    }
+  }
+
   render() {
     if (this.state.initializing) {
       return null;
@@ -78,35 +101,39 @@ class NotesApp extends React.Component {
     if (this.state.authedUser === null) {
       return (
         <LocaleProvider value={this.state.localeContext}>
-          <div className="note-app">
-            <Header />
-            <main className="userPage">
-              <Routes>
-                <Route path="/*" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
-                <Route path="/register" element={<RegisterPage />} />
-              </Routes>
-            </main>
-          </div>
-          <Footer />
+          <ThemeProvider value={this.state.themeContext}>
+            <div className="note-app">
+              <Header />
+              <main className="userPage">
+                <Routes>
+                  <Route path="/*" element={<LoginPage loginSuccess={this.onLoginSuccess} />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                </Routes>
+              </main>
+            </div>
+            <Footer />
+          </ThemeProvider>
         </LocaleProvider>
       );
     }
 
     return (
       <LocaleProvider value={this.state.localeContext}>
-        <div>
-          <Navbar logout={this.onLogout} name={this.state.authedUser.name} />
-          <div className="note-app">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/add" element={<AddPage />} />
-              <Route path="/archive" element={<ArchivePage />} />
-              <Route path="/notes/:id" element={<NotesDetailPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+        <ThemeProvider value={this.state.themeContext}>
+          <div>
+            <Navbar logout={this.onLogout} name={this.state.authedUser.name} />
+            <div className="note-app">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/add" element={<AddPage />} />
+                <Route path="/archive" element={<ArchivePage />} />
+                <Route path="/notes/:id" element={<NotesDetailPage />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
+        </ThemeProvider>
       </LocaleProvider>
     );
   }
