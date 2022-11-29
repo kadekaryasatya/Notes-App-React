@@ -1,18 +1,18 @@
-import React, { useEffect, useState, useContext } from "react";
-import NotesList from "../components/notes/NotesList";
-import SearchBar from "../components/layout/SearchBar";
-import { useSearchParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { MdOutlineAddCircle } from "react-icons/md";
-import { getActiveNotes, deleteNote, archiveNote } from "../utils/api";
-import LocaleContext from "../contexts/LocaleContext";
-import { PacmanLoader } from "react-spinners";
+import React, { useEffect, useState, useContext } from 'react';
+import NotesList from '../components/notes/NotesList';
+import SearchBar from '../components/layout/SearchBar';
+import { useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { MdOutlineAddCircle } from 'react-icons/md';
+import { getActiveNotes, deleteNote, archiveNote } from '../utils/api';
+import LocaleContext from '../contexts/LocaleContext';
+import { PacmanLoader } from 'react-spinners';
 
 function HomePage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [notes, setNotes] = useState([]);
   const [keyword, setKeyword] = useState(() => {
-    return searchParams.get("keyword") || "";
+    return searchParams.get('keyword') || '';
   });
   const { locale } = useContext(LocaleContext);
   const [loading, setLoading] = useState(false);
@@ -55,22 +55,22 @@ function HomePage() {
   return (
     <section>
       {loading ? (
-        <div className="loading">
-          <PacmanLoader color={"#FCE700"} loading={loading} />
+        <div className='loading'>
+          <PacmanLoader color={'#FCE700'} loading={loading} />
         </div>
       ) : (
         <>
-          <div className="nav-body">
+          <div className='nav-body'>
             <SearchBar keyword={keyword} keywordChange={onKeywordChangeHandler} />
-            <Link title="Add Note" to="/add" className="add">
+            <Link title='Add Note' to='/add' className='add'>
               <MdOutlineAddCircle />
             </Link>
           </div>
-          <div id="active-notes">
+          <div id='active-notes'>
             <h2>
-              <u> {locale === "id" ? "Catatan Aktif" : "Active Notes"}</u>
+              <u> {locale === 'id' ? 'Catatan Aktif' : 'Active Notes'}</u>
             </h2>
-            {notes.length !== 0 ? <NotesList notes={filteredNotes} onDelete={onDeleteHandler} onActive={onArchiveHandler} /> : <h5 className="">No Notes Here....</h5>}
+            {notes.length !== 0 ? <NotesList notes={filteredNotes} onDelete={onDeleteHandler} onActive={onArchiveHandler} /> : <h5 className=''>No Notes Here....</h5>}
           </div>
         </>
       )}
